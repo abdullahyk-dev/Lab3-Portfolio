@@ -1,0 +1,228 @@
+:root{
+  --bg: #0f1316;            /* main page background */
+  --panel: #0f1620;         /* card/panel background */
+  --muted: #9aa5ad;         /* muted body text */
+  --text: #e6eef2;          /* primary text */
+  --accent: #6bd4c7;        /* accent */
+  --accent-2: #7ad0ff;      /* second accent */
+  --glass: rgba(255,255,255,0.03);
+  --radius: 10px;
+  --max-width: 1100px;
+  --gap: 20px;
+  --shadow-sm: 0 8px 20px rgba(2,6,11,0.55);
+  --transition: 200ms cubic-bezier(.2,.9,.3,1);
+  --ui: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* reset basics */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  font-family: var(--ui);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.012), transparent 18%);
+  padding-bottom: 60px; /* make room for footer */
+}
+
+/* simple centered container used on pages */
+.container {
+  max-width: var(--max-width);
+  margin: 36px auto;
+  padding: 0 18px;
+}
+
+header {
+  width: 100%;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+header .container {
+  display:flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+}
+
+/* brand / site title */
+.brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-size: 18px;
+  color: var(--text);
+}
+
+/* nav list: horizontal links */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+nav ul li { display: inline-block; }
+nav ul li a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all var(--transition);
+}
+nav ul li a:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.02);
+  transform: translateY(-2px);
+}
+nav ul li a.active {
+  color: #042023;
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  box-shadow: 0 8px 20px rgba(43,213,195,0.08);
+}
+
+/* small button style (useful for CTA links) */
+.btn {
+  display:inline-block;
+  padding: 8px 12px;
+  border-radius: 9px;
+  background: linear-gradient(90deg,var(--accent),var(--accent-2));
+  color: #041017;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+main { padding: 28px 0; }
+
+/* .intro used in your index.html */
+.intro {
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: block;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255,255,255,0.03);
+  overflow: hidden;
+}
+
+/* profile image (used in index.html: class="profile-img") */
+.profile-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  float: left;
+  margin-right: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 12px 30px rgba(2,6,11,0.5);
+}
+
+/* text block that sits next to profile */
+.intro-text {
+  overflow: hidden; /* ensures floats don't break */
+  padding-top: 10px;
+}
+
+/* headings */
+h1, h2 {
+  color: var(--text);
+  margin: 0 0 10px 0;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 28px; line-height: 1.06; }
+h2 { font-size: 18px; }
+
+/* paragraphs */
+p { color: var(--muted); margin: 0 0 12px 0; font-size: 15px; }
+
+/* clear helper (for floated gallery / items) */
+.clearfix::after { content:""; display:block; clear:both; }
+
+.hobbies { padding-top: 6px; }
+.hobby-item {
+  background: linear-gradient(180deg, rgba(255,255,255,0.008), transparent);
+  border-radius: 10px;
+  padding: 14px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+.hobby-img {
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+  float: left;
+  margin-right: 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.gallery {
+  padding-top: 6px;
+}
+.gallery-container {
+  margin-top: 12px;
+  overflow: hidden;
+}
+.gallery-container img {
+  width: calc(33.333% - 12px);
+  margin: 6px;
+  float: left;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 20px rgba(2,6,11,0.45);
+  object-fit: cover;
+}
+
+/* ensure gallery rows clear */
+.gallery-container::after { content:""; display:block; clear: both; }
+
+.contact { padding-top: 6px; }
+.contact ul { list-style:none; padding:0; margin: 8px 0; color:var(--muted); }
+.contact a { color: var(--accent-2); text-decoration: none; font-weight:600; }
+
+/* skills list (simple, clean) */
+.skills ul { list-style:none; padding:0; margin:0; color:var(--muted); }
+.skills li { margin: 8px 0; padding: 8px 12px; background: rgba(255,255,255,0.01); border-radius: 8px; }
+
+footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  margin-top: 22px;
+  border-top: 1px solid rgba(255,255,255,0.02);
+  background: linear-gradient(180deg, rgba(255,255,255,0.005), transparent);
+}
+
+.center { text-align:center; }
+.kicker { text-transform:uppercase; font-size:12px; color:var(--accent); letter-spacing:0.12em; }
+
+@media (max-width: 900px) {
+  .profile-img { width: 140px; height: 140px; float: none; display:block; margin: 0 0 12px 0; }
+  .intro-text { padding: 0; }
+  .gallery-container img { width: calc(50% - 12px); }
+  nav ul { gap: 6px; }
+}
+
+@media (max-width: 520px) {
+  .container { margin: 18px auto; padding: 0 12px; }
+  h1 { font-size: 22px; }
+  .gallery-container img { width: calc(100% - 12px); margin: 6px 6px; }
+  nav ul { display: none; } /* hide top nav on tiny screens; keep it simple */
+}
